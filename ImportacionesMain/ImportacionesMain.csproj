@@ -1,0 +1,936 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{67CAB417-AAE0-4553-9F3B-5EEABA7AE621}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>ImportacionesMain</RootNamespace>
+    <AssemblyName>ImportacionesMain</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.Desktop.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v20.2.Core, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Anadir.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Anadir.Designer.cs">
+      <DependentUpon>Anadir.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseDatos.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Resumen_Add.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Resumen_Add.Designer.cs">
+      <DependentUpon>Frm_Resumen_Add.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Resumen_Emb.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Resumen_Emb.Designer.cs">
+      <DependentUpon>Frm_Resumen_Emb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Prueba.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Prueba.Designer.cs">
+      <DependentUpon>Prueba.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SQLConnectionClass.cs" />
+    <EmbeddedResource Include="Anadir.resx">
+      <DependentUpon>Anadir.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Resumen_Add.resx">
+      <DependentUpon>Frm_Resumen_Add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Resumen_Emb.resx">
+      <DependentUpon>Frm_Resumen_Emb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Prueba.resx">
+      <DependentUpon>Prueba.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add_16x161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Add-1-161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Add-2-161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Add-2-481.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\allowuserstoeditranges_16x161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\allowuserstoeditranges_32x321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Almacen-1-481.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\app_16x161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\app_32x321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\app_48x481.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\app_64x641.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\apply_16x161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\apply_32x321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\boresume_16x161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\boresume_32x321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bosale_16x161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bosale_32x321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Calendar_16x161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cash-1-161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cash-1-481.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cash-1-641.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close_16x161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close_32x321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Close-1-641.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\config-1-121.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\config-1-161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\config-1-481.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\config-1-1001.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Connect-1-641.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Connect-2-641.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\contact_16x161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\contact_32x321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cuero-481.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cuero-961.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\currency_16x161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\currency_32x321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\definednameuseinformula_16x161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Delete-1-641.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Drafts_16x161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Entrega-1-641.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Fecha-1-641.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\financial_16x161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\financial_32x321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Home-1-241.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Home-1-481.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Home-1-961.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-about-161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-about-481.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-add-database-161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-add-database-321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-add-database-481.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-appointment-161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-appointment-481.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-batch-321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-bills-481.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-cancel-subscription-161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-cancel-subscription-481.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-cash-481.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-close-16 %281%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-close-16 %282%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-close-161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-close-32 %281%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-close-321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-close-48 %281%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-close-48 %282%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-close-481.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-close-window-481.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-connect-16 %281%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-connect-16 %282%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-connect-161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-connect-48 %281%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-connect-48 %282%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-connect-481.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-connect-develop-161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-connect-develop-481.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-connected-161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-connected-481.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-convert-161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-convert-321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-convert-481.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-currency-exchange-161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-currency-exchange-321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-currency-exchange-481.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-database-administrator-161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-database-administrator-321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-database-administrator-481.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-database-export-161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-database-export-321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-database-export-481.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-database-export-641.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-database-export-801.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-database-restore-161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-database-restore-321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-database-restore-481.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-database-view-16 %281%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-database-view-161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-database-view-32 %281%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-database-view-321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-database-view-48 %281%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-database-view-481.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-deadline-161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-deadline-481.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-delete-161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-delete-481.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-delete-database-161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-delete-database-321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-delete-database-481.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-download-resume-801.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-due-161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-due-481.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-edit-161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-edit-481.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-enter-48 %281%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-enter-481.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-export-pdf-801.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-formula-321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-get-16 %281%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-get-161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-get-32 %281%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-get-321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-get-481.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-get-581.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-get-641.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-goals-481.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-icons-321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-logout-48 %281%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-logout-481.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-logout-581.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-magazine-161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-magazine-481.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-materials-logistics-481.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-microsoft-excel-2019-161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-microsoft-excel-2019-321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-microsoft-excel-2019-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-modify-16 %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-modify-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-modify-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-modify-48 %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-modify-48 %283%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-modify-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-next-page-16 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-next-page-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-next-page-32 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-next-page-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-next-page-48 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-next-page-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-next-page-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-no-entry-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-ok-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-picture-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-picture-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-picture-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-picture-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-refresh-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-refresh-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-refresh-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-report-16 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-report-16 %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-report-16 %283%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-report-16 %284%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-report-16 %285%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-report-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-report-32 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-report-32 %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-report-32 %283%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-report-32 %284%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-report-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-report-48 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-report-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-revenue-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-revenue-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-save-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-save-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-save-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-services %281%29.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-services.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-services-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-sql-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-sql-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-sql-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-sql-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-student-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-take-out-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-time-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-time-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-time-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-time-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-time-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-user-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-user-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-work-16 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-work-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-work-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-work-48 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-work-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-work-64 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-work-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-work-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Inbox_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Login-1-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mail_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Material-1-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Money-1-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Organizer_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Outbox_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\password-1-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\password-1-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pasword-1-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\preview_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\printsortasc_16x16 %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\printsortasc_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\printsortdesc_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\projectdirectory_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\recurrence_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\recycling-1-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\recycling-1-96.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Red-1-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Red-1-96.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Refresh-1-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Report-1-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Report-2-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Report-3-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Report-4-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ribbon_AlignCenter_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ribbon_AlignLeft_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ribbon_AlignRight_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ribbon_Bold_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ribbon_Close_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ribbon_Close_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ribbon_Content_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ribbon_Content_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ribbon_Exit_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ribbon_Exit_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ribbon_Find_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ribbon_Find_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ribbon_Info_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ribbon_Info_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ribbon_Italic_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ribbon_New_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ribbon_New_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ribbon_Open_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ribbon_Open_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ribbon_Save_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ribbon_Save_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ribbon_SaveAs_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ribbon_SaveAs_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ribbon_Underline_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save-1-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save-1-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save-1-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\saveto_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Search-192.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\solution_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Student-1-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Student-1-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tasks_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\technology_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Trash_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\trash_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\VadoCyS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Wifi-1-96.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
