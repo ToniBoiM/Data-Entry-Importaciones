@@ -87,10 +87,6 @@ class SqlConnectionClass
 
     #endregion
 
-
-
-
-
     public static DataTable CargarTablaProc(string command, List<object> list)
     {
         DataTable dt = new DataTable();

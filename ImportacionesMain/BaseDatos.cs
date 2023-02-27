@@ -62,24 +62,35 @@ namespace ImportacionesMain
 
         public static void GuardarReporte(string Agente, string POL, string POD, 
             string Carrier, string Consigneer, string BK, string HBL, string MBL, string REF, 
-            string Size, DateTime ETD, DateTime ETA, string Descripcion, float OF, float PAgent,
+            DateTime ETD, DateTime ETA, string Descripcion, float OF, float PAgent,
             string INCOTERM, string Quotation, float TOrigen, float OM, float INTOMGA, float THC,
-            string DGastos, float CLocal, float TLocal, float Rebate, float Reintegro, float Tespecial, float Otros, float Profit, float Cotizacion)
+            string DGastos, float CLocal, float TLocal, float Rebate, float Reintegro, float Tespecial, float Otros, float Profit, float Cotizacion, string RefAgente,
+            string FormaPago)
         {
-            SqlConnectionClass.GuardarProc("GuardarReporte", new List<object> { Agente, POL, POD, Carrier, Consigneer, BK, HBL, MBL, REF, Size, ETD, ETA, Descripcion, OF,
-            PAgent, INCOTERM, Quotation, TOrigen, OM, INTOMGA, THC, DGastos, CLocal, TLocal, Rebate, Reintegro, Tespecial, Otros, Profit, Cotizacion});
+            SqlConnectionClass.GuardarProc("GuardarReporte", new List<object> { Agente, POL, POD, Carrier, Consigneer, BK, HBL, MBL, REF, ETD, ETA, Descripcion, OF,
+            PAgent, INCOTERM, Quotation, TOrigen, OM, INTOMGA, THC, DGastos, CLocal, TLocal, Rebate, Reintegro, Tespecial, Otros, Profit, Cotizacion, RefAgente, FormaPago});
         }
 
         public static void ModificarReporte(string Agente, string POL, string POD,
            string Carrier, string Consigneer, string BK, string HBL, string MBL, string REF,
-           string Size, DateTime ETD, DateTime ETA, string Descripcion, float OF, float PAgent,
+           DateTime ETD, DateTime ETA, string Descripcion, float OF, float PAgent,
            string INCOTERM, string Quotation, float TOrigen, float OM, float INTOMGA, float THC,
-           string DGastos, float CLocal, float TLocal, float Rebate, float Reintegro, float Tespecial, float Otros, int Id, float Profit, float Cotizacion)
+           string DGastos, float CLocal, float TLocal, float Rebate, float Reintegro, float Tespecial, float Otros, int Id, float Profit, float Cotizacion,
+           string RefAgente, string FormaPago)
         {
-            SqlConnectionClass.GuardarProc("ModificarReporte", new List<object> { Agente, POL, POD, Carrier, Consigneer, BK, HBL, MBL, REF, Size, ETD, ETA, Descripcion, OF,
-            PAgent, INCOTERM, Quotation, TOrigen, OM, INTOMGA, THC, DGastos, CLocal, TLocal, Rebate, Reintegro, Tespecial, Otros, Id, Profit, Cotizacion});
+            SqlConnectionClass.GuardarProc("ModificarReporte", new List<object> { Agente, POL, POD, Carrier, Consigneer, BK, HBL, MBL, REF, ETD, ETA, Descripcion, OF,
+            PAgent, INCOTERM, Quotation, TOrigen, OM, INTOMGA, THC, DGastos, CLocal, TLocal, Rebate, Reintegro, Tespecial, Otros, Id, Profit, Cotizacion, RefAgente, FormaPago});
+        }
+
+        public static void GuardarSizes(float Cantidad, float Costo, string Size)
+        {
+            SqlConnectionClass.GuardarProc("GuardarSizes", new List<object> { Cantidad, Costo, Size });
+        }
+            
+        public static DataTable CargarSizes(int ID)
+        {
+            return SqlConnectionClass.CargarTabla("Sizes where IdReporte = " + ID);
+        }
+
         }
     }
-
-
-}

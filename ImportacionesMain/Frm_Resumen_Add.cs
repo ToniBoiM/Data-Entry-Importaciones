@@ -16,11 +16,20 @@ namespace ImportacionesMain
     {
         public bool modificando;
         public int Id;
-        List<Size2> sizes = new List<Size2>();
 
         public Frm_Resumen_Add()
         {
             InitializeComponent();
+            gridControl1.DataSource = CreateTable(1);
+        }
+
+        private DataTable CreateTable(int row)
+        {
+            DataTable tbl = new DataTable();
+            tbl.Columns.Add("Name", typeof(string));
+            tbl.Columns.Add("Cantidad", typeof(int));
+            tbl.Columns.Add("Costo", typeof(int));
+            return tbl;
         }
 
         Dictionary<int, decimal> customTotals = new Dictionary<int, decimal>();
@@ -49,9 +58,6 @@ namespace ImportacionesMain
         private void Frm_Resumen_Add_Load(object sender, EventArgs e)
         {
             List<string> s;
-           
-            sizes.Add(new Size2 { SizeN = "", Cantidad = 0, Costo = 0, Total = 0}) ;
-            gridControl1.DataSource = sizes;
             s = BaseDatos.CargarAgentes().AsEnumerable().Select(x => x[1].ToString()).ToList();
             cb_agente.Properties.Items.AddRange(s);
             s = BaseDatos.CargarConsigneer().AsEnumerable().Select(x => x[1].ToString()).ToList();
@@ -67,6 +73,7 @@ namespace ImportacionesMain
 
             if (modificando)
             {
+                gridControl1.DataSource = BaseDatos.CargarSizes(Id);
                 DataTable dt = BaseDatos.CargarReporte(Id);
                 cb_agente.SelectedItem = dt.Rows[0]["Agente"];
                 cb_consignee.SelectedItem = dt.Rows[0]["Consignee"];
@@ -74,12 +81,12 @@ namespace ImportacionesMain
                 cb_Pol.SelectedItem = dt.Rows[0]["Pol"];
                 cb_Pod.SelectedItem = dt.Rows[0]["Pod"];
                 cb_incoterm.SelectedItem = dt.Rows[0]["incoterm"];
+                cb_FormaPago.Text = dt.Rows[0]["FormaPago"].ToString();
 
                 txtBK.Text = dt.Rows[0]["Bk"].ToString();
                 txtHBL.Text = dt.Rows[0]["HBL"].ToString();
                 txtMBL.Text = dt.Rows[0]["MBL"].ToString();
                 txtREF.Text = dt.Rows[0]["REF"].ToString();
-                txtSize.Text = dt.Rows[0]["Size"].ToString();
                 txtDescripcion.Text = dt.Rows[0]["Descripción"].ToString();
                 txtDGastos.Text = dt.Rows[0]["DGastos"].ToString();
 
@@ -98,6 +105,7 @@ namespace ImportacionesMain
                 txtOtros.Text = dt.Rows[0]["Otros"].ToString();
                 txt_Profit.Text = dt.Rows[0]["Profit"].ToString();
                 txtCotizacion.Text = dt.Rows[0]["Cotizacion"].ToString();
+                txtRefAgente.Text = dt.Rows[0]["RefAgente"].ToString();
                 dt_ETA.EditValue = dt.Rows[0]["ETA"];
                 dt_ETD.EditValue = dt.Rows[0]["ETD"];
             }
@@ -190,6 +198,9 @@ namespace ImportacionesMain
                 prueba = txtBK.Text;
                 prueba = txtHBL.Text;
                 prueba = txtMBL.Text;
+                prueba = txtRefAgente.Text;
+                prueba = cb_FormaPago.Text;
+            
             }
             catch
             {
@@ -200,7 +211,6 @@ namespace ImportacionesMain
             try
             {
                 prueba = txtREF.Text;
-                prueba = txtSize.Text;
                 pruebo = (DateTime)dt_ETD.EditValue;
                 pruebo = (DateTime)dt_ETA.EditValue;
                 prueba = txtDescripcion.Text;
@@ -264,7 +274,7 @@ namespace ImportacionesMain
                     BaseDatos.ModificarReporte(cb_agente.Text, cb_Pol.Text, cb_Pod.Text, cb_carrier.Text,
                         cb_consignee.Text, txtBK.Text,
                    txtHBL.Text, txtMBL.Text,
-                   txtREF.Text, txtSize.Text, (DateTime)dt_ETD.EditValue, (DateTime)dt_ETA.EditValue,
+                   txtREF.Text, (DateTime)dt_ETD.EditValue, (DateTime)dt_ETA.EditValue,
                    txtDescripcion.Text, float.Parse(txtOf.EditValue.ToString()),
                    float.Parse(txtPAgent.Text), cb_incoterm.Text, txtQuotation.Text,
                    float.Parse(txtOTotal.Text), float.Parse(txtOM.Text), float.Parse(txtINLAN.Text),
@@ -272,7 +282,9 @@ namespace ImportacionesMain
                    float.Parse(txtCVLocal.Text), float.Parse(txtTlocal.Text),
                    float.Parse(txtRebate.Text), float.Parse(txtReintegro.Text),
                    float.Parse(txtTEspecial.Text), float.Parse(txtOtros.Text), Id, float.Parse(txt_Profit.Text),
-                   float.Parse(txtCotizacion.Text));
+                   float.Parse(txtCotizacion.Text)
+                   ,txtRefAgente.Text, cb_FormaPago.Text
+                   );
 
                     this.Close();
 
@@ -285,12 +297,12 @@ namespace ImportacionesMain
             }
             else
             {
-                try
+                //try
                 {
                     BaseDatos.GuardarReporte(cb_agente.Text, cb_Pol.Text, cb_Pod.Text, cb_carrier.Text,
                         cb_consignee.Text, txtBK.Text,
                    txtHBL.Text, txtMBL.Text,
-                   txtREF.Text, txtSize.Text, (DateTime)dt_ETD.EditValue, (DateTime)dt_ETA.EditValue,
+                   txtREF.Text, (DateTime)dt_ETD.EditValue, (DateTime)dt_ETA.EditValue,
                    txtDescripcion.Text, float.Parse(txtOf.EditValue.ToString()),
                    float.Parse(txtPAgent.Text), cb_incoterm.Text, txtQuotation.Text,
                    float.Parse(txtOTotal.Text), float.Parse(txtOM.Text), float.Parse(txtINLAN.Text),
@@ -298,16 +310,23 @@ namespace ImportacionesMain
                    float.Parse(txtCVLocal.Text), float.Parse(txtTlocal.Text),
                    float.Parse(txtRebate.Text), float.Parse(txtReintegro.Text),
                    float.Parse(txtTEspecial.Text), float.Parse(txtOtros.Text),
-                   float.Parse(txt_Profit.Text), float.Parse(txtCotizacion.Text));
+                   float.Parse(txt_Profit.Text), float.Parse(txtCotizacion.Text), txtRefAgente.Text, cb_FormaPago.Text);
+                    
+                   for(int i = 0; i < gridView1.DataRowCount; i++)
+                    {
+                        BaseDatos.GuardarSizes(float.Parse(gridView1.GetDataRow(i)["Cantidad"].ToString()), 
+                            float.Parse(gridView1.GetDataRow(i)["Costo"].ToString()),
+                            gridView1.GetDataRow(i)["Costo"].ToString());
+                    }
 
                     this.Close();
 
 
                 }
-                catch
-                {
-                    MessageBox.Show("Error en la base de datos");
-                }
+                //catch
+                ////{
+                //    MessageBox.Show("Error en la base de datos");
+                //}
 
             }
         }
@@ -765,12 +784,4 @@ namespace ImportacionesMain
         }
 
     }
-}
-
-public class Size2
-{
-    public string SizeN { get; set; }
-    public int Cantidad { get; set; }
-    public int Costo { get; set; }
-    public int Total { get; set; }
 }
